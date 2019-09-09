@@ -16,7 +16,7 @@ public class Application {
 		 * Instantiate Noheuristic object Test and runs a for loop 
 		 */
 		NoHeuristic Test = new NoHeuristic();
-		for(int i =0; i<10000; i++) {
+		for(int i =0; i<1000; i++) {
 			Test = new NoHeuristic();
 		
 		}//end for

@@ -1,5 +1,7 @@
 //imports
 import java.util.*;
+import java.io.*;
+import java.lang.*;
 
 /*
  * This Class will do all the heavylifting, using the Knight class it will randomise a starting point and the direction
@@ -12,6 +14,8 @@ import java.util.*;
  */
 public class NoHeuristic{
 
+	private String output;//variable for the the output  
+	
 	Knight KnightObj = new Knight();//Instentiating the Knight object
 	
 	Random rand = new Random();
@@ -198,9 +202,9 @@ public class NoHeuristic{
 		
 		for(String list : tourRuns) {//reiderates through the array tourRuns 
 			System.out.print(list);  //and out puts it 
-			
+			output+= list;
 		}//for
-		
+		output();
 		System.out.println();
 		tourRuns = new ArrayList <String>();//
 	}//tour end 
@@ -215,12 +219,29 @@ public class NoHeuristic{
     	
     	for(String list : tourRuns) {
     		System.out.print(list);
+    		output+=list;
     	}
-    	
+    	output();
     	System.out.println();
 		tourRuns = new ArrayList <String>();//
 	}//end FUll Tour
 		
-	
+    /*
+     * A File writter for the output 
+     */
+    public void output() {
+		try {
+		BufferedWriter writer = new BufferedWriter(new FileWriter("TourRuns.txt", true));
+		writer.append("NoHeuristic: " + output);
+		writer.newLine();
+		writer.close();
+		} catch (IOException ex) {
+			System.out.println("fail");
+		} 
+	}//end output
+    	
+    	
+    	
+  
 	
 }//end class
